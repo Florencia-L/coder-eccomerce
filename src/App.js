@@ -1,12 +1,12 @@
 import React from 'react';
-import MainNavbar from './components/Navbar';
+import NavbarComponent from './components/navbar/Navbar';
 import './App.scss';
 
 function App() {
   return (
     <div className="App">
       
-      <MainNavbar />
+      <NavbarComponent />
     </div>
   );
 }

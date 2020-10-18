@@ -5,11 +5,11 @@ import Button from 'react-bootstrap/Button';
 import Nav from 'react-bootstrap/Nav';
 import FormControl from 'react-bootstrap/FormControl';
 import InputGroup from 'react-bootstrap/InputGroup';
-import logo from '../assets/icons/Logo-fake.png';
-import iconSearch from '../assets/icons/search.svg';
+import logo from '../../assets/icons/Logo.png';
+import iconSearch from '../../assets/icons/search.svg';
 
 
-function MainNavbar(){
+function NavbarComponent(){
     return  <>
     <Navbar expand="lg" className="main-navbar fixed-top">
     <div className="container">
@@ -32,9 +32,6 @@ function MainNavbar(){
                 </InputGroup.Prepend>
                 <FormControl id="formSearch" placeholder="Buscar" />
             </InputGroup>
-
-            {/* <FormControl type="text" placeholder="Buscar" className="mr-sm-2" />
-            <a><img src={iconSearch}></img></a> */}
         </Form>
         </Navbar.Collapse>
     </div>
@@ -42,4 +39,4 @@ function MainNavbar(){
   </>
 }
 
-export default MainNavbar;
+export default NavbarComponent;
