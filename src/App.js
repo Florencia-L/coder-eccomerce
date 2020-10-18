@@ -1,5 +1,5 @@
 import React from 'react';
-import NavbarComponent from './components/navbar/Navbar';
+import NavbarComponent from './components/navbarComponent/NavbarComponent';
 import './App.scss';
 
 function App() {
