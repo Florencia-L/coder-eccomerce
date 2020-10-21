@@ -5,8 +5,9 @@ import Button from 'react-bootstrap/Button';
 import Nav from 'react-bootstrap/Nav';
 import FormControl from 'react-bootstrap/FormControl';
 import InputGroup from 'react-bootstrap/InputGroup';
-import logo from '../../assets/icons/Logo.png';
+import logo from '../../assets/images/Logo.png';
 import iconSearch from '../../assets/icons/search.svg';
+import CartWidget from '../CartWidget/CartWidget';
 
 
 function NavbarComponent(){
@@ -26,13 +27,14 @@ function NavbarComponent(){
             <Form.Label htmlFor="formSearch" srOnly>
                 Buscar
             </Form.Label>
-            <InputGroup className="mb-2 mr-sm-2">
+            <InputGroup className="mr-2">
                 <InputGroup.Prepend>
                 <InputGroup.Text><img src={iconSearch} className="search-icon"></img></InputGroup.Text>
                 </InputGroup.Prepend>
                 <FormControl id="formSearch" placeholder="Buscar" />
             </InputGroup>
         </Form>
+        <CartWidget />
         </Navbar.Collapse>
     </div>
   </Navbar>
