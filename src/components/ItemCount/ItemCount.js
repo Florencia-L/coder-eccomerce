@@ -16,9 +16,6 @@ function ItemCount({ stock, initial, onAdd}){
 
 
     return  <>
-        <p>Stock: {stock}</p>
-        <p>Initial: {quantity}</p>
-        <p>Carrito: </p>
         <div className="d-flex align-items-center">
             <Button variant="light" onClick={handleClickRest}>-</Button>
             <p className="mx-3 mt-3">{quantity}</p>
