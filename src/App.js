@@ -6,12 +6,14 @@ import ItemListContainer from './components/ItemListContainer/ItemListContainer'
 import ItemCount from './components/ItemCount/ItemCount';
 
 function App() {
+  const [cart, setCart] = useState(1);
 
-  const [cart, setCart] = useState(0);
+  const handleAdd = (quantity)=>{
 
-  const handleAdd = ()=>{
-    setCart(cart + 1); //no puedo conseguir el valor del initial no se como
-    console.log({cart});
+    return()=>{
+    	setCart(cart + quantity); 
+    	console.log({cart});
+    }		
   }
 
   return (
@@ -20,7 +22,7 @@ function App() {
       <NavbarComponent />
       <Home greeting="Bienvenido a SportNow!">
         <ItemListContainer title="Item número 1">
-          <ItemCount stock="20" initial="1" onAdd={handleAdd} />
+          <ItemCount stock={20} initial={1} onAdd={handleAdd} />
         </ItemListContainer>
       </Home>
     </div>
