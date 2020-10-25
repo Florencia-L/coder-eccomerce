@@ -6,14 +6,16 @@ import ItemListContainer from './components/ItemListContainer/ItemListContainer'
 import ItemCount from './components/ItemCount/ItemCount';
 
 function App() {
-  const [cart, setCart] = useState(1);
+  const [cart, setCart] = useState(0);
 
-  const handleAdd = (quantity)=>{
-
-    return()=>{
-    	setCart(cart + quantity); 
-    	console.log({cart});
-    }		
+  const handleAdd = (quantity, stock)=>{
+    if (quantity <= stock) {
+      return()=>{
+        setCart(cart + quantity); 
+        console.log({cart});
+      }	
+    }
+    	
   }
 
   return (
