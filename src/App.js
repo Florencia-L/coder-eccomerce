@@ -24,8 +24,8 @@ function App() {
       
       <NavbarComponent />
       <Home greeting="Bienvenido a SportNow!">
+      <ItemCount stock={20} initial={1} onAdd={handleAdd} />
         <ItemListContainer title="Item número 1">
-          <ItemCount stock={20} initial={1} onAdd={handleAdd} />
         </ItemListContainer>
       </Home>
     </div>

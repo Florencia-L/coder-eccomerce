@@ -24,12 +24,12 @@ const getItems = () => {
     });
 }
 
-function ItemListContainer({title, children}){
+function ItemListContainer({title}){
     const [items, setItems] = useState();
 
     useEffect( () => {
         console.log('Inicializada item container');
-        getItems.then( items => {
+        getItems().then( items => {
             setItems(items);
         })
     }, []);
@@ -39,7 +39,6 @@ function ItemListContainer({title, children}){
         <h5 className="text-center font-weight-normal">{title}</h5>
         <ItemList items={items}/>
     </div>
-    {children}
 </>
 }
 
