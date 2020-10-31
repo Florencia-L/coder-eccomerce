@@ -2,13 +2,14 @@ import React from 'react';
 import Item from '../Item/Item'
 
 function ItemList({ items }){
-
-
-    return items.map( (item) => {<Item key={item}></Item>})
+    return (<>
+                <div className="row">
+                    {items.map( (item) => {return <Item {...item}></Item>})}
+                </div>
+            </>)
     // <>
     // <div className="row">
     //     <ul>
-            
     //     </ul>
     // </div>
     // </>

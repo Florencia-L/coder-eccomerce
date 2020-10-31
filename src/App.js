@@ -4,7 +4,7 @@ import NavbarComponent from './components/navbarComponent/NavbarComponent';
 import Home from './components/Home/Home';
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 import ItemCount from './components/ItemCount/ItemCount';
-import ItemList from './components/ItemList/ItemList';
+import ItemList from './components/ItemListContainer/ItemList/ItemList';
 
 function App() {
   const [cart, setCart] = useState(0);
@@ -24,9 +24,9 @@ function App() {
       
       <NavbarComponent />
       <Home greeting="Bienvenido a SportNow!">
-      <ItemCount stock={20} initial={1} onAdd={handleAdd} />
-        <ItemListContainer title="Item número 1">
+        <ItemListContainer title="Calzas">
         </ItemListContainer>
+        <ItemCount stock={20} initial={1} onAdd={handleAdd} />
       </Home>
     </div>
   );
