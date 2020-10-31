@@ -4,6 +4,7 @@ import NavbarComponent from './components/navbarComponent/NavbarComponent';
 import Home from './components/Home/Home';
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 import ItemCount from './components/ItemCount/ItemCount';
+import ItemList from './components/ItemList/ItemList';
 
 function App() {
   const [cart, setCart] = useState(0);
