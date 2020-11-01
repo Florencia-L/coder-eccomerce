@@ -16,12 +16,12 @@ function ItemCount({ stock, initial, onAdd}){
 
 
     return  <>
-        <div className="d-flex align-items-center">
+        <div className="d-flex align-items-center mb-3">
             <Button variant="light" onClick={handleClickRest}>-</Button>
             <p className="mx-3 mt-3">{quantity}</p>
             <Button variant="light" onClick={handleClickAdd}>+</Button>
         </div>
-       <Button variant="primary" onClick={onAdd(quantity, stock)}>Agregar</Button>
+       <Button variant="primary" block onClick={onAdd(quantity, stock)}>Agregar</Button>
     </>
 }
 

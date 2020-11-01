@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import ItemList from './ItemList/ItemList';
+import ItemList from './ItemList';
 import calza from '../../assets/images/producto.jpg';
 
 let products = [{id:1,title:'Calza deportiva Scout', price:1250, urlImg: calza },
@@ -26,7 +26,7 @@ function ItemListContainer({title}){
     }, []);
     
     return  <>
-    <div className="container">
+    <div className="container mt-5">
         <h5 className="text-center font-weight-normal">{title}</h5>
         <ItemList items={items}/>
     </div>
