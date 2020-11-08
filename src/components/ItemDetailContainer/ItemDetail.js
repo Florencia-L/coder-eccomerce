@@ -20,7 +20,7 @@ function ItemDetail({ item }){
                 <div className="col-6">
                     <img src={item.urlImg} className="w-100"></img>
                 </div> 
-                <div className="col-6">
+                <div className="col-6 mt-5">
                     <h2>{item.title}</h2>
                     <p>{item.description}</p>
                     <h5>Precio: $<span>{item.price}</span></h5>
