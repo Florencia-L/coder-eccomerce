@@ -1,16 +1,25 @@
-import React, {useState}  from 'react';
+import React, {useState, Link}  from 'react';
 import ItemCount from '../ItemCount/ItemCount';
 import SizeSelector from './SizeSelector';
+import Button from 'react-bootstrap/Button';
+
 
 function ItemDetail({ item }){
 
     const [cart, setCart] = useState(0);
+    const [qState, setQState] = useState(null);
+    const [count, setCount] = useState(null);
+    const [button, setButton] = useState(null);
+
+    setButton(false); 
 
     const handleAdd = (quantity, stock)=>{
         if (quantity <= stock) {
           return()=>{
             setCart(cart + quantity); 
-            console.log({cart});
+            setQState(quantity);
+            setCount(false); 
+            setButton(true); 
           }	
         }      
     }
@@ -25,7 +34,8 @@ function ItemDetail({ item }){
                     <p>{item.description}</p>
                     <h5>Precio: $<span>{item.price}</span></h5>
                     <SizeSelector />
-                    <ItemCount stock={20} initial={1} onAdd={handleAdd} />
+                    <ItemCount count={count} stock={20} initial={1} onAdd={handleAdd} />
+                    <Button variant="primary" block button={button}><Link to="/cart">Termina tu compra ({qState})</Link></Button>
                 </div> 
             </div>
     </>

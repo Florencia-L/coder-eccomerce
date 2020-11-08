@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Button from 'react-bootstrap/Button';
 
 function ItemCount({ stock, initial, onAdd}){
@@ -13,7 +13,6 @@ function ItemCount({ stock, initial, onAdd}){
         let add = quantity - 1;
         setQuantity( ( add < 0 ) ? 0 : add);
     }
-
 
     return  <>
         <div className="d-flex align-items-center mb-3">
