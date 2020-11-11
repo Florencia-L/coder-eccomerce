@@ -16,22 +16,23 @@ let products = [
 const getItems = (idemId) => {
     return new Promise( (res, rej) => {
         setTimeout( () => {
-            res(products.find(product=> product.id === idemId ));
+            res(products.find( product => product.id === idemId) ); //res(products.find( product => product.id === idemId ) );
         }, 1000);
     });
 }
 
-
 function ItemDetailContainer() {
-    let [item, setItem1] = useState(null);
+    let [item, setItem] = useState([]);
     const {id} = useParams();
     console.log(id);
 
     useEffect( () => {
         console.log('Inicializada item container');
-        getItems(id).then( res => setItem1(res) );
+        getItems(id).then( res => setItem(res) );
     }, [id]);
-    
+
+    console.log(item);  //lo levanta como undefined
+
     return (<>
                 <div className="container mt-5 pt-5">
                     {item && <ItemDetail item={item} />}

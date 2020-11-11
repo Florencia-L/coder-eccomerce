@@ -5,16 +5,17 @@ import Button from 'react-bootstrap/Button';
 
 function ItemDetail({ item }){
     const [cart, setCart] = useState(0);
-    const [qState, setQState] = useState(null);
+    //const [qState, setQState] = useState(null);
     const [count, setCount] = useState(null);
-    const [button, setButton] = useState(false);
+    //const [button, setButton] = useState(false);
+    
     const handleAdd = (quantity, stock)=>{
         if (quantity <= stock) {
           return()=>{
             setCart(cart + quantity); 
-            setQState(quantity);
+           // setQState(quantity);
             setCount(false); 
-            setButton(true); 
+            //setButton(true); 
           }	
         }      
     }
