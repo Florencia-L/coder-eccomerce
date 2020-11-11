@@ -16,27 +16,28 @@ let products = [
 const getItems = (idemId) => {
     return new Promise( (res, rej) => {
         setTimeout( () => {
-            res(products[0]);
+            res(products.find(product=> product.id === idemId ));
         }, 1000);
     });
 }
 
-function ItemDetailContainer({ items }) {
-    let [item, setItem1] = useState([]);
+
+function ItemDetailContainer() {
+    let [item, setItem1] = useState(null);
     const {id} = useParams();
+    console.log(id);
 
     useEffect( () => {
         console.log('Inicializada item container');
-        getItems(id).then( res => {
-            setItem1(res);
-        })
+        getItems(id).then( res => setItem1(res) );
     }, [id]);
     
-    return  <>
-    <div className="container mt-5 pt-5">
-       <ItemDetail item={item} />
-    </div>
-    </>
-    }
+    return (<>
+                <div className="container mt-5 pt-5">
+                    {item && <ItemDetail item={item} />}
+                </div>
+            </>)
+}
+
 
 export default ItemDetailContainer;
