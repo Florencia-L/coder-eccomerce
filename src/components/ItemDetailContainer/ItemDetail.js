@@ -5,19 +5,19 @@ import Button from 'react-bootstrap/Button';
 
 function ItemDetail({ item }){
     const [cart, setCart] = useState(0);
-    //const [qState, setQState] = useState(null);
-    const [count, setCount] = useState(null);
-    //const [button, setButton] = useState(false);
-    
+    const [compra, setCompra] = useState([]);
+    const [counter, setCounter] = useState(false);
+
+
     const handleAdd = (quantity, stock)=>{
         if (quantity <= stock) {
           return()=>{
             setCart(cart + quantity); 
-           // setQState(quantity);
-            setCount(false); 
-            //setButton(true); 
+            setCompra({ counter: setCounter(true), cantidad: quantity, image: item.urlImg, title: item.title, description: item.description, price: item.price} );
+            console.log(compra);
+            console.log(counter);
           }	
-        }      
+        }
     }
     return  (<>
             <div className="row">
@@ -29,8 +29,7 @@ function ItemDetail({ item }){
                     <p>{item.description}</p>
                     <h5>Precio: $<span>{item.price}</span></h5>
                     <SizeSelector />
-                    <ItemCount count={count} stock={20} initial={1} onAdd={handleAdd} />
-                    {/*<Button variant="primary" block button={button}><Link to="/cart">Termina tu compra ({qState})</Link></Button>*/}
+                    {compra.counter && <ItemCount stock={20} initial={1} onAdd={handleAdd} />}
                 </div> 
             </div>
     </>)
