@@ -16,7 +16,7 @@ let products = [
 const getItems = (idemId) => {
     return new Promise( (res, rej) => {
         setTimeout( () => {
-            res(products.find( product => product.id) ); //res(products.find( product => product.id === idemId ) );
+            res(products.find( product => product.id == idemId ) );
         }, 1000);
     });
 }
