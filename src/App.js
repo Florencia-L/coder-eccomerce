@@ -5,11 +5,13 @@ import Home from './components/Home/Home';
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer'
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
+//import CartProvider, { CartContext } from './components/CardContext/CardContext'
 
 
 function App() {
 
   return (
+    //<CartProvider defaultCart={[]}>
     <BrowserRouter>
       <div className="App">
         <NavbarComponent />
