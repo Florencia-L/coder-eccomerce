@@ -5,40 +5,40 @@ import Home from './components/Home/Home';
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer'
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-//import CartProvider, { CartContext } from './components/CardContext/CardContext'
+import CartProvider, { CartContext } from './context/CartContext/CartContext';
 
 
 function App() {
 
   return (
-    //<CartProvider defaultCart={[]}>
-    <BrowserRouter>
-      <div className="App">
-        <NavbarComponent />
+    <CartProvider defaultCart={[]}>
+      <BrowserRouter>
+        <div className="App">
+          <NavbarComponent />
 
-        <Switch>
+          <Switch>
 
-          <Route exact path="/">
-            <Home greeting="Bienvenido a SportNow!">
-              <ItemListContainer title="Calzas">
-              </ItemListContainer>
-            </Home>
-          </Route>
+            <Route exact path="/">
+              <Home greeting="Bienvenido a SportNow!">
+                <ItemListContainer title="Calzas">
+                </ItemListContainer>
+              </Home>
+            </Route>
 
-          <Route path="/item/:id">
-            <ItemDetailContainer/>
-          </Route>
+            <Route path="/item/:id">
+              <ItemDetailContainer/>
+            </Route>
 
-          <Route exact path="/cart">
-            <div className="container">
-              <h3>Here we have the cart view with items selected</h3>
-            </div>
-          </Route>
-        </Switch>
+            <Route exact path="/cart">
+              <div className="container">
+                <h3>Here we have the cart view with items selected</h3>
+              </div>
+            </Route>
+          </Switch>
 
-      </div>
-    </BrowserRouter>
-    //</CartProvider>
+        </div>
+      </BrowserRouter>
+    </CartProvider>
   );
 }
 

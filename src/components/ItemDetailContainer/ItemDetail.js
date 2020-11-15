@@ -3,15 +3,15 @@ import ItemCount from '../ItemCount/ItemCount';
 import SizeSelector from './SizeSelector';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
-//import { useCartContext } from './CardContext/CardContext';
-
-//const { add } = useCartContext();
+import { UseCartContext } from '../../context/CartContext/CartContext';
 
 
 function ItemDetail({ item }){
     const [count, setCount] = useState(null);
     const [btn, setButton] = useState(false);
     const [product, setProduct] = useState([]);
+
+    const { add } = UseCartContext();
 
     const handleAdd = (quantity, stock, evt)=>{
         setCount(quantity); 
