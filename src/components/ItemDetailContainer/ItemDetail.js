@@ -3,6 +3,9 @@ import ItemCount from '../ItemCount/ItemCount';
 import SizeSelector from './SizeSelector';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
+{/*import { useCartContext } from '../CardContext/CardContext'*/}
+
+    {/*const { add } = useCartContext();*/}
 
 function ItemDetail({ item }){
     const [count, setCount] = useState(null);
