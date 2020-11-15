@@ -3,9 +3,10 @@ import ItemCount from '../ItemCount/ItemCount';
 import SizeSelector from './SizeSelector';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
-{/*import { useCartContext } from '../CardContext/CardContext'*/}
+//import { useCartContext } from './CardContext/CardContext';
 
-    {/*const { add } = useCartContext();*/}
+//const { add } = useCartContext();
+
 
 function ItemDetail({ item }){
     const [count, setCount] = useState(null);
@@ -36,7 +37,7 @@ function ItemDetail({ item }){
                     <h5>Precio: $<span>{item.price}</span></h5>
                     <SizeSelector />
                     {!btn && <ItemCount stock={20} initial={1} onAdd={handleAdd} />}
-                    <Link to="/cart"><Button btn>Finalizar mi compra</Button></Link>
+                    {btn &&<Link to="/cart"><Button btn>Finalizar mi compra</Button></Link>}
                 </div> 
             </div>
     </>)
