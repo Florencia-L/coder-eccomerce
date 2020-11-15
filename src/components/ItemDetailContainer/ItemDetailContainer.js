@@ -31,8 +31,6 @@ function ItemDetailContainer() {
         getItems(id).then( res => setItem(res) );
     }, [id]);
 
-    console.log(item);  //lo levanta como undefined
-
     return (<>
                 <div className="container mt-5 pt-5">
                     {item && <ItemDetail item={item} />}

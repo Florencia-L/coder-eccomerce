@@ -11,14 +11,14 @@ import { Link } from 'react-router-dom';
 function ItemDetail({ item }){
     const [count, setCount] = useState(null);
     const [btn, setButton] = useState(false);
-
-    const cart = ( { 
-        quantity: count,
-        item,
-    } );
+    const [product, setProduct] = useState([]);
 
     const handleAdd = (quantity, stock, evt)=>{
         setCount(quantity); 
+        setProduct(item);
+        console.log(product);
+        console.log(count);
+
         if (quantity <= stock) {
           return()=>{
             setButton(true);
@@ -26,6 +26,8 @@ function ItemDetail({ item }){
         }
         evt.stopPropagation();
     }
+
+
     return  (<>
             <div className="row">
                 <div className="col-6">
