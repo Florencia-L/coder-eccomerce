@@ -3,7 +3,7 @@ import ItemCount from '../ItemCount/ItemCount';
 import SizeSelector from './SizeSelector';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
-import { UseCartContext } from '../../context/CartContext/CartContext';
+//import { UseCartContext } from '../../context/CartContext/CartContext';
 
 
 function ItemDetail({ item }){
@@ -11,10 +11,10 @@ function ItemDetail({ item }){
     const [btn, setButton] = useState(false);
     const [product, setProduct] = useState([]);
 
-    const { add } = UseCartContext(item, quantity);
-    const { remove } = UseCartContext( item.find( product => product.id = itemId));
-    console.log(add);
-    console.log(remove);
+    //const { add } = UseCartContext(item, quantity);
+    //const { remove } = UseCartContext( item.find( product => product.id = itemId));
+    //console.log(add);
+    //console.log(remove);
 
     const handleAdd = (quantity, stock, evt)=>{
         setCount(quantity); 
