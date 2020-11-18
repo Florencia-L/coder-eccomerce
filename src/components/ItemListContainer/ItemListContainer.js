@@ -25,9 +25,11 @@ function ItemListContainer({title}){
         const pricedItems = itemCollection.where('price', '>', 500);
 
         itemCollection.get().then( (querySnapshot) => {
-
+            if(querySnapshot.size === 0){
+                console.log('no results');
+            }
+            
             setItems( querySnapshot.docs.map( doc => ({ id: doc.id, ...doc.data() }) ) );
-
         });
 
         //console.log('Inicializada item container');
