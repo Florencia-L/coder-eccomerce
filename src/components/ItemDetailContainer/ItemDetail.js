@@ -11,7 +11,7 @@ function ItemDetail({ item }){
     const [btn, setButton] = useState(false);
     const [product, setProduct] = useState([]);
 
-    //const { add } = UseCartContext(item, quantity);
+    const { add } = UseCartContext();
     //const { remove } = UseCartContext( item.find( product => product.id = itemId));
     //console.log(add);
     //console.log(remove);
@@ -25,6 +25,7 @@ function ItemDetail({ item }){
         if (quantity <= stock) {
           return()=>{
             setButton(true);
+            add(item,quantity);
           }	
         }
         evt.stopPropagation();

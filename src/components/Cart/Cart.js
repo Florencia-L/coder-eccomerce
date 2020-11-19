@@ -1,9 +1,16 @@
 import React from 'react';
 import calza from '../../assets/images/producto.jpg';
+import { UseCartContext } from '../../context/CartContext/CartContext';
 
 function Cart({ }){
 
-    return <>
+    const {cart, remove, removeAll} = UseCartContext();
+
+    const quantity = cart.map( itemQuantity => (itemQuantity.quantity));
+    const id = cart.map( itemId => (itemId.item.id));
+
+    return cart.length > 0 ?
+    <> 
         <div className="container mt-5 pt-5">
             <div className="row justify-content-between">
                 <div className="col-md-7">
@@ -18,7 +25,7 @@ function Cart({ }){
                                     <p><small>Cantidad: </small></p>
                                 </div>
                                 <div className="col-md-3 text-right mt-3">
-                                    <button className="btn-primary mb-3">X</button>
+                                    <button className="btn-primary mb-3" onClick={remove(id)}>X</button>
                                     <p>Precio: </p>
                                 </div>
                             </div>
@@ -53,14 +60,16 @@ function Cart({ }){
                     </ul>
                 </div>
             </div>
-            {/* Condicional si tengo items muestro uno sino tengo muestro mensaje */}
-            <div className="mt-5">
-                <h6>No hay items en el carrito</h6>
-                <button className="btn-primary mt-3">Volver</button>
-            </div>
         </div>
 
         {/* Card Widget debe cambiar estado de cantidad de items agregados y mostrarse si hay items o no mostrarse */}
+    </>
+    :
+    <>
+    <div className="mt-5">
+        <h6>No hay items en el carrito</h6>
+        <button className="btn-primary mt-3">Volver</button>
+    </div>
     </>
 }
 
