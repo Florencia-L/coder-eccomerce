@@ -18,6 +18,7 @@ const categories = [
 ];
 
 function NavbarComponent(){
+
     return  <>
     <Navbar expand="lg" className="main-navbar fixed-top">
     <div className="container">

@@ -1,75 +1,59 @@
 import React from 'react';
-import calza from '../../assets/images/producto.jpg';
 import { UseCartContext } from '../../context/CartContext/CartContext';
+import { Link } from 'react-router-dom';
+import ListCart from './ListCart'
+import ListItemResume from './ListItemResume'
+
+
 
 function Cart({ }){
-
-    const {cart, remove, removeAll} = UseCartContext();
+    const {cart, removeAll} = UseCartContext();
 
     const quantity = cart.map( itemQuantity => (itemQuantity.quantity));
-    const id = cart.map( itemId => (itemId.item.id));
+    const totalPrice = cart.map(item => parseInt((item.item.price)*(item.quantity))); 
+    //suma bien los items del mismo id, si el id es diferente no lo suma, lo junta como string
 
     return cart.length > 0 ?
     <> 
-        <div className="container mt-5 pt-5">
+        {<div className="container mt-5 pt-5">
             <div className="row justify-content-between">
                 <div className="col-md-7">
                     <ul className="list-unstyled">
-                        <li>
-                            <div className="row">
-                                <div className="col-md-3">
-                                    <img style={{maxWidth: "150px", width: "100%"}} src={calza} />
-                                </div>
-                                <div className="col-md-6 mt-3">
-                                    <h6>Titulo del producto</h6>
-                                    <p><small>Cantidad: </small></p>
-                                </div>
-                                <div className="col-md-3 text-right mt-3">
-                                    <button className="btn-primary mb-3" onClick={remove(id)}>X</button>
-                                    <p>Precio: </p>
-                                </div>
-                            </div>
-                            <hr />
-                        </li>
+                       <ListCart />
                     </ul>
                 </div>
-                <div className="col-md-4 mt-3">
+                <div className="col-md-5 mt-3">
                     <ul className="list-unstyled card p-4" style={{
                         backgroundColor: "white",
                         border: "none",
                         boxShadow: "0 3px 14px 0 rgba(0, 0, 0, 0.05)"}}>
-                        <li>
-                            <div className="row">
-                                <div className="col-md-6">
-                                    <h6>Title Item</h6>
-                                </div>
-                                <div className="col-md-6 text-right">
-                                    <h6>$542</h6>
-                                </div>
+                        <div className="row">
+                            <div className="col-md-6">
+                                <h6>Tu compra</h6>
                             </div>
-                            <hr />
-                        </li>
+                        </div>
+                        <ListItemResume />
                         <div className="row">
                             <div className="col-md-6">
                                 <h6>TOTAL</h6>
                             </div>
                             <div className="col-md-6 text-right">
-                                <h6>$542</h6>
+                            <h6>$ {totalPrice}</h6>
                             </div>
                         </div>
                     </ul>
                 </div>
             </div>
-        </div>
+            <button className="btn btn-link" onClick={removeAll}>Vaciar carrito</button>
+        </div>}
 
         {/* Card Widget debe cambiar estado de cantidad de items agregados y mostrarse si hay items o no mostrarse */}
     </>
-    :
-    <>
-    <div className="mt-5">
+    : <>
+    {<div className="mt-5 pt-5 container">
         <h6>No hay items en el carrito</h6>
-        <button className="btn-primary mt-3">Volver</button>
-    </div>
+        <Link to="/"><button className="btn-primary mt-3">Volver</button></Link>
+    </div>}
     </>
 }
 

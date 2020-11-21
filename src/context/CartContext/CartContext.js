@@ -14,19 +14,20 @@ export default function CartProvider( { children,  defaultCart } ){
             const tempCart = [...cart];
             tempCart[cartIndex].quantity+=quantity;
             setCart(tempCart);
+            console.log(cart);
         }
         else{
             setCart( [...cart, {item,quantity}]);
         }
     }
 
-    function remove(itemId){
-        const tempCart = cart.filter( (product)=>{return product.item.id !== itemId} );
+    function remove(item){
+        const tempCart = cart.filter( (product)=>{return product.item.id !== item.item.id} );
         setCart(tempCart);
     }
 
     function removeAll(){
-        cart.clear();
+        setCart(defaultCart);
     }
 
 
