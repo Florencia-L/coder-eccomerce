@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState,useEffect} from 'react';
 import { UseCartContext } from '../../context/CartContext/CartContext';
 import { Link } from 'react-router-dom';
 import ListCart from './ListCart'
@@ -8,10 +8,14 @@ import ListItemResume from './ListItemResume'
 
 function Cart({ }){
     const {cart, removeAll} = UseCartContext();
-
+    const [totalPrice, setPrice] = useState(0);
     const quantity = cart.map( itemQuantity => (itemQuantity.quantity));
-    const totalPrice = cart.map(item => parseInt((item.item.price)*(item.quantity))); 
-    //suma bien los items del mismo id, si el id es diferente no lo suma, lo junta como string
+
+    useEffect(()=>{
+        let price = 0;
+        cart.forEach((item) =>{ price += Number(item.item.price)*Number(item.quantity)})
+        setPrice(price);
+    },[cart]);
 
     return cart.length > 0 ?
     <> 
