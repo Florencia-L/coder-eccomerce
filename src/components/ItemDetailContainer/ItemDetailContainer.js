@@ -2,8 +2,9 @@ import React, {useEffect, useState} from 'react';
 import calza from '../../assets/images/producto.jpg';
 import ItemDetail from './ItemDetail';
 import { useParams } from "react-router-dom";
+import { getFirestore } from '../../firebase';
 
-let products = [
+/*let products = [
     {id:1, title:'Calza deportiva Scout', description: "Estas calzas de running para mujer están confeccionadas en tejido Speedwick con inserciones de malla para repeler el sudor y brindarte la transpirabilidad que necesitás. Encontrá tu ajuste ideal con el cordón regulable de la cintura, y mantené tus artículos esenciales a mano gracias a su pequeño bolsillo. Sus detalles reflectantes te mantienen visible en condiciones de poca luz.", price:1250, urlImg: calza, stock:5, categoryId:'mujer' },
 
     {id:2, title:'Calza deportiva PowerShot', description: "Estas calzas de running para mujer están confeccionadas en tejido Speedwick con inserciones de malla para repeler el sudor y brindarte la transpirabilidad que necesitás. Encontrá tu ajuste ideal con el cordón regulable de la cintura, y mantené tus artículos esenciales a mano gracias a su pequeño bolsillo. Sus detalles reflectantes te mantienen visible en condiciones de poca luz.", price:1380, urlImg: calza, stock:5, categoryId:'mujer' },
@@ -19,7 +20,8 @@ const getItems = (idemId) => {
             res(products.find( product => product.id == idemId ) );
         }, 1000);
     });
-}
+}  
+---borrar---  */
 
 function ItemDetailContainer() {
     let [item, setItem] = useState([]);
@@ -28,7 +30,23 @@ function ItemDetailContainer() {
 
     useEffect( () => {
         console.log('Inicializada item container');
-        getItems(id).then( res => setItem(res) );
+        const db = getFirestore();
+        const itemCollection = db.collection("items");
+
+        //deberia filtrar por id a los items que coincidan con el params
+        const IdemId = itemCollection.where('id', '==', id); 
+
+        //getItems(id).then( res => setItem(res) );  ---borrar---
+
+        IdemId.get().then( (querySnapshot) => {
+            if(querySnapshot.size === 0){
+                console.log('no results');
+            }
+
+            setItem( querySnapshot.docs.map( doc => ({ id: doc.id, ...doc.data() }) ) ); 
+            //al ya estar filtrado solo debria traer toda la data de IdemId
+            //setItem( { id: doc.id, ...doc.data() } );
+        });
     }, [id]);
 
     return (<>
