@@ -1,5 +1,5 @@
 import React from 'react';
-import calza from '../../assets/images/producto.jpg';
+//import calza from '../../../public/images/producto.jpg';
 import { UseCartContext } from '../../context/CartContext/CartContext';
 
 function ListCart(){
@@ -9,7 +9,7 @@ function ListCart(){
     {<li>
         <div className="row">
             <div className="col-md-3">
-                <img style={{maxWidth: "150px", width: "100%"}} src={calza} />
+                <img style={{maxWidth: "150px", width: "100%"}} src={item.item.image} />
             </div>
             <div className="col-md-6 mt-3">
                 <h6>{item.item.title}</h6>

@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import calza from '../../assets/images/producto.jpg';
+//import calza from '../../../public/images/producto.jpg';
 import ItemDetail from './ItemDetail';
 import { useParams } from "react-router-dom";
 import { getFirestore } from '../../firebase';
@@ -44,8 +44,6 @@ function ItemDetailContainer() {
             }
 
             setItem( querySnapshot.docs.map( doc => ({ id: doc.id, ...doc.data() }) ) ); 
-            //al ya estar filtrado solo debria traer toda la data de IdemId
-            //setItem( { id: doc.id, ...doc.data() } );
         });
     }, [id]);
 
