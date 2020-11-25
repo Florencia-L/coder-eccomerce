@@ -16,7 +16,10 @@ function CartWidget(){
 
 
     return cart.length > 0 ? <> 
-        {<Button variant="warning" className="mt-md-0 mt-4 text-white">{totalQuantity}<img src={iconCart} className="ml-2 search-icon"></img></Button>}
+        {<Button variant="warning" className="mt-md-0 mt-4 text-white">
+            <img src={iconCart} className="ml-2 search-icon"></img>
+            <span className="badge badge-pill badge-success ml-2">{totalQuantity}</span>
+        </Button>}
     </>
     : [];
 }
