@@ -35,7 +35,7 @@ function ItemDetail({ item }){
     return  (<>
             <div className="row">
                 <div className="col-6">
-                    <img src={item.urlImg} className="w-100"></img>
+                    <img src={`/images/${item.image}`} className="w-100"></img>
                 </div> 
                 <div className="col-6 mt-5">
                     <h2>{item.title}</h2>

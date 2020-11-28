@@ -34,16 +34,23 @@ function ItemDetailContainer() {
         const itemCollection = db.collection("items");
 
         //deberia filtrar por id a los items que coincidan con el params
-        const IdemId = itemCollection.where('id', '==', id); 
+        //const IdemId = itemCollection.where('id', '==', id); 
+        const item = itemCollection.doc(id);
 
         //getItems(id).then( res => setItem(res) );  ---borrar---
 
-        IdemId.get().then( (querySnapshot) => {
+        /*IdemId.get().then( (querySnapshot) => {
             if(querySnapshot.size === 0){
                 console.log('no results');
             }
 
             setItem( querySnapshot.docs.map( doc => ({ id: doc.id, ...doc.data() }) ) ); 
+        });*/
+
+        item.get().then(doc => {
+            setItem({ id: doc.id, ...doc.data() });
+        }).finally(() => {
+            /*cambiar spinner por ej*/
         });
     }, [id]);
 

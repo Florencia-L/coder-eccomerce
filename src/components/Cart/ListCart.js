@@ -9,7 +9,7 @@ function ListCart(){
     {<li>
         <div className="row">
             <div className="col-md-3">
-                <img style={{maxWidth: "150px", width: "100%"}} src={item.item.image} />
+                <img style={{maxWidth: "150px", width: "100%"}} src={`/images/${item.item.image}`} />
             </div>
             <div className="col-md-6 mt-3">
                 <h6>{item.item.title}</h6>
