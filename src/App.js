@@ -21,7 +21,7 @@ function App() {
 
             <Route exact path="/">
               <Home greeting="Bienvenido a SportNow!">
-                <ItemListContainer title="Calzas">
+                <ItemListContainer>
                 </ItemListContainer>
               </Home>
             </Route>

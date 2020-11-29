@@ -38,12 +38,10 @@ function ItemListContainer({title}){
         })*/
     }, []);
     
-    return  <>
-    <div className="container mt-5">
-        <h5 className="text-center font-weight-normal">{title}</h5>
+    return <div className="container mt-4">
         <ItemList items={items}/>
     </div>
-</>
+
 }
 
 export default ItemListContainer;

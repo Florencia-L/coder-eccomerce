@@ -4,15 +4,22 @@ import { Link } from 'react-router-dom';
 import ListCart from './ListCart';
 import ListItemResume from './ListItemResume';
 import { getFirestore } from '../../firebase';
-import * as firebase from 'firebase/app';
-import 'firebase/firestore';
+import Form from 'react-bootstrap/Form';
 
+function UseInput(defaultValue){
+    const [value, setValue] = useState(defaultValue);
+    return {
+        onChange: (evt) => setValue(evt.target.value),
+        value: value,
+    }
+}
 
-
-function Cart({ }){
+export default function Cart({ }){
     const {cart, removeAll} = UseCartContext();
     const [totalPrice, setPrice] = useState(0);
-    const quantity = cart.map( itemQuantity => (itemQuantity.quantity));
+    const nameInput = UseInput("");
+    const phoneInput = UseInput("");
+    const emailInput = UseInput("");
 
     useEffect(()=>{
         let price = 0;
@@ -21,24 +28,25 @@ function Cart({ }){
     },[cart]);
 
     async function createOrder(){
+        const buyerContent = { name: {nameInput}, phone: {phoneInput}, email: {emailInput} };
+        const cartContent = cart.map( item => 
+            ({id: item.item.id, title: item.item.title, price: item.item.price, quantity: item.quantity}) 
+        );
+
+        console.log(buyerContent);
+        console.log(cartContent);
+
         const order = {
-            buyer : { name: 'Florencia', phone: '154454526', email: 'flor.lapetina@hotmail.com' },
-            //capturarlo del formulario cuando lo agregue
-            items: [
-                cart.map( item => 
-                    ({id: item.id, title: item.item.title, price: item.item.price, quantity: item.quantity}) 
-                )
-                // { id: 1, title:'Calza deportiva Scout', price: 1250, quantity: 1},
-                // { id: 2, title:'Calza deportiva PowerShot', price: 1380, quantity: 1},
-            ],
+            buyer : buyerContent,
+            items: [ cartContent ],
             total: totalPrice,
-        }
+            //si lo hardcodeo anda, si lo uso con las variables que le dan los valores no anda.
+        };
+
 
         const db = getFirestore();
         const orders = db.collection('orders');
-        // orders.add(order).then( id => {
-        //     console.log('Order id: ' + id)
-        // });
+       
         try{
             const id = await orders.add(order);
             console.log('Order id: ' + id)
@@ -46,6 +54,7 @@ function Cart({ }){
             console.log('no funciono');
         }
     }
+
 
     return cart.length > 0 ?
     <> 
@@ -74,15 +83,48 @@ function Cart({ }){
                             <div className="col-md-6 text-right">
                                 <h6>$ {totalPrice}</h6>
                             </div>
-                            <button className="btn btn-primary btn-block mt-4" onClick={createOrder}>Finalizar compra</button>
+                            <button className="btn btn-link mt-3" onClick={removeAll}>Vaciar carrito</button>
                         </div>
                     </ul>
                 </div>
             </div>
-            <button className="btn btn-link" onClick={removeAll}>Vaciar carrito</button>
-        </div>}
 
-        {/* Card Widget debe cambiar estado de cantidad de items agregados y mostrarse si hay items o no mostrarse */}
+            <hr className="mt-5" />
+            <div className="row justify-content-between mt-5 mb-5">
+                <div className="col-5">
+                <h4>Check out</h4>
+                <p>Completá el siguiente formulario para terminar tu compra</p>
+                    <Form  className="my-4">
+                        <Form.Group>
+                            <Form.Label>Nombre y Apellido</Form.Label>
+                            <Form.Control type="text" placeholder="Ingrese su nombre y apellido" {...nameInput} />
+                        </Form.Group>
+
+                        <Form.Group>
+                            <Form.Label>Número de teléfono</Form.Label>
+                            <Form.Control type="text" placeholder="Ingrese su telefono" {...phoneInput} />
+                        </Form.Group>
+
+                        <Form.Group>
+                            <Form.Label>Email</Form.Label>
+                            <Form.Control type="email" placeholder="Ingrese su email" {...emailInput} />
+                        </Form.Group>
+
+                        <Form.Group controlId="formBasicCheckbox" className="mt-4">
+                            <Form.Check type="checkbox" label="Acepto los terminos y condiciones" />
+                        </Form.Group>
+                    </Form>
+
+                    <button className="btn btn-primary mt-4" onClick={createOrder}
+                    disabled={!nameInput.value || !phoneInput.value || !emailInput.value}>Finalizar compra</button>
+                </div>
+                <div className="col-6">
+                    <p><strong>Terminos y condiciones</strong></p>
+                    <p><small>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</small></p>
+                </div>
+            </div>
+            
+        </div>}
     </>
     : <>
     {<div className="mt-5 pt-5 container">
@@ -91,5 +133,3 @@ function Cart({ }){
     </div>}
     </>
 }
-
-export default Cart;

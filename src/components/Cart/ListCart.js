@@ -14,10 +14,10 @@ function ListCart(){
             <div className="col-md-6 mt-3">
                 <h6>{item.item.title}</h6>
                 <p><small>Cantidad: {item.quantity}</small></p>
+                <p>Precio: {item.item.price}</p>
             </div>
             <div className="col-md-3 text-right mt-3">
                 <button className="btn-primary mb-3" onClick = {()=>{remove(item)}}>X</button>
-                <p>Precio: {item.item.price}</p>
             </div>
         </div>
         <hr />

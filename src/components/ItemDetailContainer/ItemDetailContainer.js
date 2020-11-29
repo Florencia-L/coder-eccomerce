@@ -55,7 +55,7 @@ function ItemDetailContainer() {
     }, [id]);
 
     return (<>
-                <div className="container mt-5 pt-5">
+                <div className="container mt-5 pt-5 pb-5">
                     {item && <ItemDetail item={item} />}
                 </div>
             </>)

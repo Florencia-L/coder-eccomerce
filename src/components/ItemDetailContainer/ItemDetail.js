@@ -33,8 +33,8 @@ function ItemDetail({ item }){
 
 
     return  (<>
-            <div className="row">
-                <div className="col-6">
+            <div className="row justify-content-between">
+                <div className="col-5">
                     <img src={`/images/${item.image}`} className="w-100"></img>
                 </div> 
                 <div className="col-6 mt-5">
@@ -43,7 +43,7 @@ function ItemDetail({ item }){
                     <h5>Precio: $<span>{item.price}</span></h5>
                     <SizeSelector />
                     {!btn && <ItemCount stock={20} initial={1} onAdd={handleAdd} />}
-                    {btn &&<Link to="/cart"><Button btn>Finalizar mi compra</Button></Link>}
+                    {btn &&<Link to="/cart"><Button btn className="btn-block">Continuar</Button></Link>}
                 </div> 
             </div>
     </>)
