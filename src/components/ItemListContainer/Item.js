@@ -7,7 +7,7 @@ function Item( {id, title, price, image} ){
 
     return  <>
             <div className="col-3 mb-5">
-                <Card>
+                <Card className="h-100">
                     <Card.Body>
                         <Link to={`/item/${id}`}><img src = {`/images/${image}`} className="w-100 mb-3"></img></Link>
                         <h6>{title}</h6>

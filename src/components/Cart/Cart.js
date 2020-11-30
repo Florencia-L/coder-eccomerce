@@ -17,6 +17,7 @@ function UseInput(defaultValue){
 export default function Cart({ }){
     const {cart, removeAll} = UseCartContext();
     const [totalPrice, setPrice] = useState(0);
+    const [message, setMessage] = useState(false);
     const nameInput = UseInput("");
     const phoneInput = UseInput("");
     const emailInput = UseInput("");
@@ -53,12 +54,14 @@ export default function Cart({ }){
         } catch (err){
             console.log('no funciono');
         }
+
+        setMessage(true);
     }
 
 
     return cart.length > 0 ?
     <> 
-        {<div className="container mt-5 pt-5">
+        {!message && <div className="container mt-5 pt-5">
             <div className="row justify-content-between">
                 <div className="col-md-7">
                     <ul className="list-unstyled">
@@ -96,17 +99,17 @@ export default function Cart({ }){
                 <p>Completá el siguiente formulario para terminar tu compra</p>
                     <Form  className="my-4">
                         <Form.Group>
-                            <Form.Label>Nombre y Apellido</Form.Label>
+                            <Form.Label><small>Nombre y Apellido</small></Form.Label>
                             <Form.Control type="text" placeholder="Ingrese su nombre y apellido" {...nameInput} />
                         </Form.Group>
 
                         <Form.Group>
-                            <Form.Label>Número de teléfono</Form.Label>
+                            <Form.Label><small>Número de teléfono</small></Form.Label>
                             <Form.Control type="text" placeholder="Ingrese su telefono" {...phoneInput} />
                         </Form.Group>
 
                         <Form.Group>
-                            <Form.Label>Email</Form.Label>
+                            <Form.Label><small>Email</small></Form.Label>
                             <Form.Control type="email" placeholder="Ingrese su email" {...emailInput} />
                         </Form.Group>
 
@@ -125,6 +128,11 @@ export default function Cart({ }){
             </div>
             
         </div>}
+        {message && <div message className="container text-center mt-5 pt-5">
+            <h2 className="mt-5">Gracias por tu compra!</h2>
+            <p>Te enviamos un email con tu facturación</p>
+            <Link to="/"><button className="btn btn-primary mt-4">Volver al home</button></Link>
+            </div>}
     </>
     : <>
     {<div className="mt-5 pt-5 container">

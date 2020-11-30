@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import ItemList from './ItemList';
-//import calza from '../../../public/images/producto.jpg';
 import { getFirestore } from '../../firebase';
 
 /*let products = [{id:1,title:'Calza deportiva Scout', price:1250, urlImg: calza },

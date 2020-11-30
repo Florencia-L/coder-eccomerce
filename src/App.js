@@ -3,6 +3,7 @@ import './App.scss';
 import NavbarComponent from './components/navbarComponent/NavbarComponent';
 import Home from './components/Home/Home';
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
+import ItemListContainerCategory from './components/ItemListContainer/itemListContainerCategory';
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer'
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import CartProvider from './context/CartContext/CartContext';
@@ -21,13 +22,18 @@ function App() {
 
             <Route exact path="/">
               <Home greeting="Bienvenido a SportNow!">
-                <ItemListContainer>
-                </ItemListContainer>
+                <ItemListContainer />
               </Home>
             </Route>
 
-            <Route path="/item/:id">
-              <ItemDetailContainer/>
+            <Route exact path="/item/:id">
+                <ItemDetailContainer/>
+            </Route>
+
+            <Route path="/category/:categoryId">
+              <Home greeting="SportNow!">
+                <ItemListContainerCategory />
+              </Home>
             </Route>
 
             <Route path="/cart">
