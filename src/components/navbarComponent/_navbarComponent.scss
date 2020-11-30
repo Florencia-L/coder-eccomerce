@@ -17,6 +17,14 @@
       letter-spacing: 2px;
       padding-right: 15px !important;
       padding-left: 15px !important;
+      a{
+        color: rgb(51, 51, 51);
+        transition: color .3s ease-in-out;
+        &:hover{
+          color: #0069d9;
+          text-decoration: none;
+        }
+      }
     }
     .search-icon{
       height: 18px;
