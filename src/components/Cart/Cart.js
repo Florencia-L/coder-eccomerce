@@ -29,19 +29,13 @@ export default function Cart({ }){
     },[cart]);
 
     async function createOrder(){
-        const buyerContent = { name: {nameInput}, phone: {phoneInput}, email: {emailInput} };
-        const cartContent = cart.map( item => 
-            ({id: item.item.id, title: item.item.title, price: item.item.price, quantity: item.quantity}) 
-        );
-
-        console.log(buyerContent);
-        console.log(cartContent);
 
         const order = {
-            buyer : buyerContent,
-            items: [ cartContent ],
+            buyer : { name: nameInput.value, phone: phoneInput.value, email: emailInput.value },
+            items: cart.map( item => 
+                ({id: item.item.id, title: item.item.title, price: item.item.price, quantity: item.quantity}) 
+            ),
             total: totalPrice,
-            //si lo hardcodeo anda, si lo uso con las variables que le dan los valores no anda.
         };
 
 
