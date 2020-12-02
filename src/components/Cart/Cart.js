@@ -18,6 +18,7 @@ export default function Cart({ }){
     const {cart, removeAll} = UseCartContext();
     const [totalPrice, setPrice] = useState(0);
     const [message, setMessage] = useState(false);
+    const [orderId, setOrderId] = useState(null);
     const nameInput = UseInput("");
     const phoneInput = UseInput("");
     const emailInput = UseInput("");
@@ -43,8 +44,9 @@ export default function Cart({ }){
         const orders = db.collection('orders');
        
         try{
-            const id = await orders.add(order);
-            console.log('Order id: ' + id)
+            const { id } = await orders.add(order);
+            console.log('Order id: ' + id);
+            setOrderId(id);
         } catch (err){
             console.log('no funciono');
         }
@@ -124,7 +126,7 @@ export default function Cart({ }){
         </div>}
         {message && <div message className="container text-center mt-5 pt-5">
             <h2 className="mt-5">Gracias por tu compra!</h2>
-            <p>Te enviamos un email con tu facturación</p>
+                <p>Tu número de compra es: {orderId}</p>
             <Link to="/"><button className="btn btn-primary mt-4">Volver al home</button></Link>
             </div>}
     </>
