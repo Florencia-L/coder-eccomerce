@@ -12,15 +12,10 @@ function ItemDetail({ item }){
     const [product, setProduct] = useState([]);
 
     const { add } = UseCartContext();
-    //const { remove } = UseCartContext( item.find( product => product.id = itemId));
-    //console.log(add);
-    //console.log(remove);
 
     const handleAdd = (quantity, stock, evt)=>{
         setCount(quantity); 
-        setProduct(item);
-        console.log(product);
-        console.log(count);
+        setProduct(item); 
 
         if (quantity <= stock) {
           return()=>{

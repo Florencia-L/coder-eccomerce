@@ -14,7 +14,6 @@ export default function CartProvider( { children,  defaultCart } ){
             const tempCart = [...cart];
             tempCart[cartIndex].quantity+=quantity;
             setCart(tempCart);
-            console.log(cart);
         }
         else{
             setCart( [...cart, {item,quantity}]);

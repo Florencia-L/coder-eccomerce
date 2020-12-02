@@ -6,7 +6,6 @@ import { UseCartContext } from '../../context/CartContext/CartContext';
 function CartWidget(){
     const {cart} = UseCartContext();
     const [totalQuantity, setQuantity] = useState(0);
-    //const quantity = cart.map( itemQuantity => (itemQuantity.quantity));
 
     useEffect(()=>{
         let quantity = 0;
