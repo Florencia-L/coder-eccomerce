@@ -10,7 +10,7 @@ function Item( {id, title, price, image} ){
                     <Card.Body>
                         <Link to={`/item/${id}`}><img src = {`/images/${image}`} className="w-100 mb-3"></img></Link>
                         <h6>{title}</h6>
-                        <p>Precio: $<span>{price}</span></p>
+                        <p className="m-0">Precio: ${price}</p>
                     </Card.Body>
                 </Card>
             </div> 
