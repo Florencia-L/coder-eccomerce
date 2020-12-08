@@ -33,7 +33,7 @@ export default function Cart({ }){
     async function createOrder(){
 
         const order = {
-            buyer : { name: nameInput.value, phone: phoneInput.value, email: emailInput.value },
+            buyer : { name: nameInput.value, phone: phoneInput.value, email: emailInput.value, emailConfirmation: emailConfirmationInput.value},
             items: cart.map( item => 
                 ({id: item.item.id, title: item.item.title, price: item.item.price, quantity: item.quantity}) 
             ),
