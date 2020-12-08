@@ -22,6 +22,7 @@ export default function Cart({ }){
     const nameInput = UseInput("");
     const phoneInput = UseInput("");
     const emailInput = UseInput("");
+    const emailConfirmationInput = UseInput("");
 
     useEffect(()=>{
         let price = 0;
@@ -109,13 +110,18 @@ export default function Cart({ }){
                             <Form.Control type="email" placeholder="Ingrese su email" {...emailInput} />
                         </Form.Group>
 
+                        <Form.Group>
+                            <Form.Label><small>Confirmación de email</small></Form.Label>
+                            <Form.Control type="email" placeholder="Ingrese nuevamente su email" {...emailConfirmationInput} />
+                        </Form.Group>
+
                         <Form.Group controlId="formBasicCheckbox" className="mt-4">
                             <Form.Check type="checkbox" label="Acepto los terminos y condiciones" />
                         </Form.Group>
                     </Form>
 
                     <button className="btn btn-primary mt-4" onClick={createOrder}
-                    disabled={!nameInput.value || !phoneInput.value || !emailInput.value}>Finalizar compra</button>
+                    disabled={!nameInput.value || !phoneInput.value || !emailInput.value || !emailConfirmationInput.value}>Finalizar compra</button>
                 </div>
                 <div className="col-6">
                     <p><strong>Terminos y condiciones</strong></p>
