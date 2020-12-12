@@ -55,7 +55,6 @@ export default function Cart({ }){
         setMessage(true);
     }
 
-
     return cart.length > 0 ?
     <> 
         {!message && <div className="container mt-5 pt-5">
@@ -121,7 +120,7 @@ export default function Cart({ }){
                     </Form>
 
                     <button className="btn btn-primary mt-4" onClick={createOrder}
-                    disabled={!nameInput.value || !phoneInput.value || !emailInput.value || !emailConfirmationInput.value}>Finalizar compra</button>
+                    disabled={!nameInput.value || !phoneInput.value || !emailInput.value || !emailConfirmationInput.value || emailInput.value != emailConfirmationInput.value}>Finalizar compra</button>
                 </div>
                 <div className="col-6">
                     <p><strong>Terminos y condiciones</strong></p>
